@@ -26,13 +26,9 @@ public class MyInvocationSecurityMetadataSource implements FilterInvocationSecur
     private void loadResourceDefine() {
         resourceMap = new HashMap<String, Collection<ConfigAttribute>>();
         Collection<ConfigAttribute> atts = new ArrayList<ConfigAttribute>();
-        ConfigAttribute ca = new SecurityConfig("ROLE_USER");
-        atts.add(ca);
+        atts.add(new SecurityConfig("ROLE_USER"));
+        atts.add(new SecurityConfig("ROLE_ADMIN"));
         resourceMap .put("/index.jsp", atts);
-        Collection<ConfigAttribute> attsno = new ArrayList<ConfigAttribute>();
-        ConfigAttribute cano = new SecurityConfig("ROLE_NO");
-        attsno.add(cano);
-        resourceMap .put("/other.jsp", attsno);
     }
     // According to a URL, Find out permission configuration of this URL.
     public Collection<ConfigAttribute> getAttributes(Object object)
